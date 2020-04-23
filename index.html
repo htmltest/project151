@@ -1,0 +1,1451 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Агрегатор информации о грантовой поддержке исследователей</title>
+<meta name="keywords" content="научный фонд, научно-техническая деятельность, инновации" />
+<meta name="description" content="В агрегаторе содержится информация о научных фондах, о направлениях грантовой поддержки. Работает Навигатор получателей грантов." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta http-equiv="cleartype" content="on" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="address=no" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="Robots" content="all" />
+<meta name="Document-state" content="Dynamic" />
+<meta http-equiv="ImageResize" content="no" />
+<meta http-equiv="ImageToolbar" content="no" />
+<meta name="MSSmartTagsPreventParsing" content="True" />
+<meta name="Developer" content="Kirill A. Kalyuzhny, cageybee_at_mail_dot_ru" />
+<link href="http://funds.riep.ru/bitrix/templates/funds3/components/bitrix/news/navigator/bitrix/news.list/.default/style.css?14912094091027" type="text/css"  rel="stylesheet" />
+<link href="http://funds.riep.ru/bitrix/templates/funds3/css/normalize.css?14696249197365" type="text/css"  data-template-style="true"  rel="stylesheet" />
+<link href="http://funds.riep.ru/bitrix/templates/funds3/css/font-awesome.min.css?146962491929063" type="text/css"  data-template-style="true"  rel="stylesheet" />
+<link href="http://funds.riep.ru/bitrix/templates/funds3/css/form.css?14911606615644" type="text/css"  data-template-style="true"  rel="stylesheet" />
+<link href="http://funds.riep.ru/bitrix/templates/funds3/css/jquery-ui.min.css?147222691416780" type="text/css"  data-template-style="true"  rel="stylesheet" />
+<link href="http://funds.riep.ru/bitrix/templates/funds3/css/colorbox.css?15402012474430" type="text/css"  data-template-style="true"  rel="stylesheet" />
+<link href="http://funds.riep.ru/bitrix/templates/funds3/css/style.css?158273589310647" type="text/css"  data-template-style="true"  rel="stylesheet" />
+<script type="text/javascript">var bxDate = new Date(); document.cookie="BITRIX_SM_TIME_ZONE="+bxDate.getTimezoneOffset()+"; path=/; expires=Fri, 01-Jan-2038 00:00:00 GMT"</script>
+
+
+
+<script type="text/javascript" src="http://funds.riep.ru/bitrix/templates/funds3/js/jquery-2.2.4.min.js?147181071885578"></script>
+<script type="text/javascript" src="http://funds.riep.ru/bitrix/templates/funds3/js/script.js?15402158235116"></script>
+<script type="text/javascript" src="http://funds.riep.ru/bitrix/templates/funds3/js/jquery.colorbox.js?150229207929168"></script>
+<script type="text/javascript" src="http://funds.riep.ru/bitrix/templates/funds3/js/jquery-ui.min.js?147221928732071"></script>
+<script type="text/javascript" src="http://funds.riep.ru/bitrix/templates/funds3/js/autocomplete.js?14818077661770"></script>
+<script type="text/javascript" src="http://funds.riep.ru/bitrix/templates/funds3/components/bitrix/news/navigator/bitrix/catalog.filter/.default/script.js?1481993620615"></script>
+<script type="text/javascript">var _ba = _ba || []; _ba.push(["aid", "c556b688a00f29f1c5786b0d2a442d4f"]); _ba.push(["host", "funds.riep.ru"]); (function() {var ba = document.createElement("script"); ba.type = "text/javascript"; ba.async = true;ba.src = (document.location.protocol == "https:" ? "https://" : "http://") + "bitrix.info/ba.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ba, s);})();</script>
+
+
+<!--[if lte IE 8]>
+	<link rel="stylesheet" href="http://funds.riep.ru/bitrix/templates/funds3/css/lteie8.css" media="all" />
+<![endif]-->
+
+<link rel="stylesheet" href="js/mcustomscrollbar/jquery.mCustomScrollbar.css" />
+<link rel="stylesheet" href="css/opendata.css" />
+<script src="js/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/opendata.js"></script>
+
+</head>
+<body id="top">
+	<div id="panel"></div>
+	<div id="oldie">
+	<div>
+		<h3>Ваш браузер устарел!</h3>
+		<p>Браузер, которым вы пользуетесь для просмотра этого сайта, устарел и не соответствует <a href="http://www.w3.org/" target="_blank">современным технологическим стандартам</a> Интернета.</p><p>Вы можете установить последнюю версию подходящего браузера, воспользовавшись ссылками ниже:</p>
+		<ul>
+		<li><a href="http://windows.microsoft.com/en-us/internet-explorer/products/ie/home/" target="_blank">Internet Explorer</a> компании Microsoft</li>
+		<li><a href="http://www.mozilla.org/" target="_blank">Firefox</a> некоммерческой организации Mozilla</li>
+		<li><a href="http://www.opera.com/" target="_blank">Opera</a> компании Opera Software</li>
+		<li><a href="http://www.apple.com/safari/" target="_blank">Safari</a> компании Apple</li>
+		<li><a href="http://www.google.com/chrome/" target="_blank">Chrome</a> компании Google</li>
+		</ul>
+		</div>
+	</div>
+	<div id="pagelimiter">
+		<div id="pageframe">
+			<div id="pagecontent">
+				<header>
+					<div id="site_title"><div><a href="/">Агрегатор информации о грантовой поддержке исследователей</a></div></div>
+					<div id="mon_logo"><div><img src="http://funds.riep.ru/bitrix/templates/funds3/img/mon.png" />Минобрнауки России</div></div>
+					<div class="clear_all"></div>
+				</header>
+
+                <!-- opendata -->
+                <div class="opendata">
+                    <div class="opendata-title">Открытые данные</div>
+
+                    <!-- opendata block -->
+                    <div class="opendata-block open">
+                        <div class="opendata-block-title"><img src="images/opendata-block-1.svg" alt="" />Исследователи</div>
+
+                        <!-- opendata block container -->
+                        <div class="opendata-block-container">
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                            <!-- opendata group -->
+                            <div class="opendata-group open">
+                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по конкурсам выбранного фонда, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по всем фондам, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Состав стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Состав стипендиатов и грантополучателей по всем фондам, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Гражданство стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по всем фондам, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Состав стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Состав стипендиатов и грантополучателей по всем фондам, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Гражданство стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                        </div>
+                        <!-- opendata block container END -->
+
+                    </div>
+                    <!-- opendata block END -->
+
+                    <!-- opendata block -->
+                    <div class="opendata-block">
+                        <div class="opendata-block-title"><img src="images/opendata-block-2.svg" alt="" />Финансирование</div>
+
+                        <!-- opendata block container -->
+                        <div class="opendata-block-container">
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по конкурсам выбранного фонда, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                        </div>
+                        <!-- opendata block container END -->
+
+                    </div>
+                    <!-- opendata block END -->
+
+                    <!-- opendata block -->
+                    <div class="opendata-block">
+                        <div class="opendata-block-title"><img src="images/opendata-block-3.svg" alt="" />Организации</div>
+
+                        <!-- opendata block container -->
+                        <div class="opendata-block-container">
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                            <!-- opendata group -->
+                            <div class="opendata-group">
+                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по конкурсам выбранного фонда, чел.</div>
+
+                                <!-- opendata group container -->
+                                <div class="opendata-group-container">
+
+                                    <div class="opendata-filter">
+                                        <form action="#" method="post">
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Регион"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="region" value="77" /><span>Москва</span></label>
+                                                    <label><input type="radio" name="region" value="78" /><span>Санкт-Петербург</span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="opendata-filter-item">
+                                                <div class="opendata-filter-item-current" data-placeholder="Фонд"></div>
+                                                <div class="opendata-filter-item-list">
+                                                    <label><input type="radio" name="fund" value="1" /><span>Фонд 1</span></label>
+                                                    <label><input type="radio" name="fund" value="2" /><span>Фонд 2</span></label>
+                                                    <label><input type="radio" name="fund" value="3" /><span>Фонд 3</span></label>
+                                                    <label><input type="radio" name="fund" value="4" /><span>Фонд 4</span></label>
+                                                    <label><input type="radio" name="fund" value="5" /><span>Фонд 5</span></label>
+                                                    <label><input type="radio" name="fund" value="6" /><span>Фонд 6</span></label>
+                                                    <label><input type="radio" name="fund" value="7" /><span>Фонд 7</span></label>
+                                                    <label><input type="radio" name="fund" value="8" /><span>Фонд 8</span></label>
+                                                    <label><input type="radio" name="fund" value="9" /><span>Фонд 9</span></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="opendata-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Год</th>
+                                                    <th>Всего</th>
+                                                    <th>До 39 лет включительно</th>
+                                                    <th>Старше 39 лет</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2014</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2016</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2017</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2019</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020</td>
+                                                    <td>1 223</td>
+                                                    <td>4 213</td>
+                                                    <td>4 213</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="opendata-doc">
+                                        <a href="#">
+                                            <img src="images/opendata-xls.svg" alt="" />
+                                            <div class="opendata-doc-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                            <div class="opendata-doc-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <!-- opendata group container END -->
+
+                            </div>
+                            <!-- opendata group END -->
+
+                        </div>
+                        <!-- opendata block container END -->
+
+                    </div>
+                    <!-- opendata block END -->
+
+                </div>
+                <!-- opendata END -->
+
+
+                <hr />
+            <div id="logos">
+				<img src="http://funds.riep.ru/bitrix/templates/funds3/img/logos.png" width=100% />
+			</div>
+			<div id="footer">
+				<div id="footer_content">
+					<div id="cprt"><p>Реестр разработан при поддержке Минобрнауки России.</p><p>&copy; Реализация и сопровождение: ФГБУ "РИЭПП".</p></div>
+					<div class="banner">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="scroller"><a href="#top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a></div>
+</body>
+</html>

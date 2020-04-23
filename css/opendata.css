@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;700&display=swap");
+
+.opendata {font-family:"Exo 2", sans-serif; padding:62px 50px 190px 50px}
+.opendata > * {box-sizing:border-box}
+.opendata > *::before {box-sizing:border-box}
+.opendata > *::after {box-sizing:border-box}
+
+@media screen and (max-width:1024px) {
+    .opendata {padding:31px 0 61px}
+}
+
+.opendata-title {text-align:center; font-size:26px; line-height:31px; color:#ea574e; font-weight:500; margin:0 0 42px 0}
+
+@media screen and (max-width:1024px) {
+    .opendata-title {text-align:left; font-size:30px; line-height:45px; font-weight:bold; padding:0 20px; margin:0 0 40px 0}
+}
+
+.opendata-block {margin:20px 0 0 0; background:#fff; border-radius:3px; position:relative}
+.opendata-block-title {position:relative; cursor:pointer; padding:31px 0 31px 86px; color:#ea574e; font-weight:500; font-size:23px; line-height:28px; letter-spacing:0.05em}
+.opendata-block-title img {display:block; position:absolute; left:40px; top:50%; transform:translateY(-50%)}
+.opendata-block-title::after {content:""; display:block; width:41px; height:41px; position:absolute; right:40px; top:22px; background:url(../images/opendata-block-title.svg) no-repeat; transition:all 0.2s}
+.opendata-block.open .opendata-block-title::after {transform:rotate(-180deg)}
+
+@media screen and (max-width:1024px) {
+    .opendata-block {margin:40px 0 0 0}
+    .opendata-block-title {padding:22px 0 25px 81px; font-size:24px; line-height:36px; letter-spacing:0}
+    .opendata-block-title img {left:23px; transform:translateY(-50%) scale(1.26); transform-origin:left center}
+    .opendata-block-title::after {right:20px; top:20px}
+}
+
+.opendata-block-container {position:absolute; left:-9999px; top:-9999px; opacity:0; transition:opacity 0.2s; padding:0 40px}
+.opendata-block.open .opendata-block-container {position:relative; left:auto; top:auto; opacity:1}
+
+@media screen and (max-width:1024px) {
+    .opendata-block-container {padding:0 20px}
+}
+
+.opendata-group {border-top:1px solid #d7acaa}
+.opendata-group:first-child {border-top:2px solid #c8c8c8}
+.opendata-group-title {position:relative; cursor:pointer; padding:31px 0 36px 61px; color:#242424; font-weight:normal; font-size:20px; line-height:24px}
+.opendata-group-title::before {content:""; display:block; width:41px; height:41px; position:absolute; left:0; top:25px; background:url(../images/opendata-group-title.svg) no-repeat; transition:all 0.2s}
+.opendata-group-title::after {content:""; display:block; width:41px; height:41px; position:absolute; left:0; top:25px; background:url(../images/opendata-group-title-open.svg) no-repeat; opacity:0; transition:all 0.2s}
+.opendata-group.open .opendata-group-title::before {opacity:0}
+.opendata-group.open .opendata-group-title::after {opacity:1}
+
+@media screen and (max-width:1024px) {
+    .opendata-group-title {line-height:26px; padding:13px 0 20px 63px}
+    .opendata-group-title::before,
+    .opendata-group-title::after {top:50%; margin-top:-20.5px}
+}
+
+.opendata-group-container {position:absolute; left:-9999px; top:-9999px; opacity:0; transition:opacity 0.2s; padding:0 0 55px 0}
+.opendata-group.open .opendata-group-container {position:relative; left:auto; top:auto; opacity:1}
+
+@media screen and (max-width:1024px) {
+    .opendata-group-container {padding:35px 0 33px 0}
+}
+
+.opendata-filter {margin:0 0 26px 0}
+.opendata-filter form {margin:0; padding:0}
+.opendata-filter form::after {content:""; display:block; clear:both}
+.opendata-filter-item {float:left; margin:0 0 0 10px; width:208px; position:relative}
+.opendata-filter-item:first-child {margin:0}
+.opendata-filter-item.open {z-index:99}
+.opendata-filter-item-current {border:1px solid #d9d9d9; border-radius:1px; position:relative; cursor:pointer; padding:0 36px 0 13px; font-size:16px; line-height:46px; height:48px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; color:#000}
+.opendata-filter-item-current.default {color:#808080}
+.opendata-filter-item.open .opendata-filter-item-current {border-radius:1px 1px 0 0}
+.opendata-filter-item-current::after {content:""; display:block; width:16px; height:9px; background:url(../images/opendata-select.svg) no-repeat; position:absolute; right:11px; top:19px}
+.opendata-filter-item-list {display:none; position:absolute; left:0; top:100%; margin-top:-1px; right:0; border:1px solid #d9d9d9; background:#fff; font-size:16px; line-height:24px; border-radius:0 0 1px 1px; max-height:250px; overflow:auto}
+.opendata-filter-item.open .opendata-filter-item-list {display:block}
+.opendata-filter-item-list label {display:block; cursor:pointer; border-top:1px solid #d9d9d9; margin:0}
+.opendata-filter-item-list label:first-child {border-top:none}
+.opendata-filter-item-list label input {display:none}
+.opendata-filter-item-list label span {display:block; padding:11px 13px; color:#808080; transition:all 0.2s; position:relative}
+.opendata-filter-item-list label span:hover {background:#f5f5f5}
+.opendata-filter-item-list label input:checked+span {color:#000; background:#fdeeed}
+.opendata-filter-item-list label input:checked+span::after {content:""; display:block; width:20px; height:20px; position:absolute; right:10px; top:14px; background:url(../images/opendata-select-active.svg) no-repeat}
+
+@media screen and (max-width:1024px) {
+    .opendata-filter {margin:0 0 40px 0}
+    .opendata-filter-item {float:none; margin:20px 0 0 0; width:auto}
+    .opendata-filter-item:first-child {margin:0}
+    .opendata-filter-item-current {height:70px; padding:0 36px 0 19px; font-size:20px; line-height:68px}
+    .opendata-filter-item-current::after {width:23px; height:14px; background-size:100%; right:20px; top:28px}
+    .opendata-filter-item-list {font-size:20px; line-height:30px; max-height:300px}
+    .opendata-filter-item-list label span {padding:19px 54px 19px 19px}
+    .opendata-filter-item-list label input:checked+span::after {width:24px; height:24px; background-size:100%; right:15px; top:22px}
+}
+
+.opendata-table:first-child {margin-top:36px}
+.opendata-table table {width:100%; border-collapse:collapse; margin:0; border-bottom:2px solid #c8c8c8}
+.opendata-table th {border-bottom:2px solid #c8c8c8; font-weight:normal; font-size:16px; line-height:24px; color:#8a8a8a; text-align:left; vertical-align:top; padding:0 30px 19px 30px; width:25%}
+.opendata-table td {font-weight:normal; font-size:16px; line-height:24px; color:#000; text-align:left; vertical-align:top; padding:24px 30px}
+.opendata-table tbody tr:nth-child(even) td {background:rgba(165, 165, 165, 0.1)}
+
+@media screen and (max-width:1024px) {
+    .opendata-table {position:relative; overflow:auto; margin:0 -20px; padding:0 0 0 20px}
+    .opendata-table:first-child {margin-top:0}
+    .opendata-table table {width:768px; border-bottom:none}
+    .opendata-table th {font-size:20px; line-height:30px; padding:0 20px 14px 20px; border-bottom-color:#525252; white-space:nowrap}
+    .opendata-table td {font-size:20px; line-height:30px; padding:11px 20px 14px 20px}
+}
+
+.opendata-doc {margin:28px 0 0 0}
+.opendata-doc a {display:block; text-decoration:none; color:#ea574e; border-bottom:none; position:relative; padding:0 0 0 35px}
+.opendata-doc a img {display:block; position:absolute; left:0; top:7px; width:23px}
+.opendata-doc-title {font-size:16px; line-height:24px}
+.opendata-doc-info {font-size:13px; line-height:19px; color:#898989; margin:-3px 0 0 0}
+.opendata-doc-info span {color:#c6c6c6}
+
+@media screen and (max-width:1024px) {
+    .opendata-doc {margin:57px 0 0 0}
+    .opendata-doc a {padding:0 0 0 53px}
+    .opendata-doc a img {width:33px; top:0}
+    .opendata-doc-title {font-size:20px; line-height:24px}
+    .opendata-doc-info {font-size:16px; line-height:24px; margin:3px 0 0 0}
+}
