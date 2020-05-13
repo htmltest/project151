@@ -5,7 +5,24 @@ j(document).ready(function() {
     });
 
     j('.opendata-group-title').click(function() {
-        j(this).parent().toggleClass('open');
+        var curGroup = j(this).parent();
+        curGroup.toggleClass('open');
+        if (curGroup.hasClass('open')) {
+            var curContainer = curGroup.find('.opendata-group-container');
+            if (curContainer.attr('data-link')) {
+                curContainer.addClass('loading');
+                j.ajax({
+                    type: 'GET',
+                    url: curContainer.attr('data-link'),
+                    dataType: 'html',
+                    cache: false
+                }).done(function(html) {
+                    curContainer.html(html);
+                    curContainer.removeClass('loading');
+                });
+                curContainer.removeAttr('data-link');
+            }
+        }
     });
 
     j('.opendata-filter-item-current').click(function() {

@@ -51,6 +51,7 @@
 
 .opendata-group-container {position:absolute; left:-9999px; top:-9999px; opacity:0; transition:opacity 0.2s; padding:0 0 55px 0}
 .opendata-group.open .opendata-group-container {position:relative; left:auto; top:auto; opacity:1}
+.opendata-group-container.loading {min-height:200px; background:url(../images/opendata-loading.gif) no-repeat center}
 
 @media screen and (max-width:1024px) {
     .opendata-group-container {padding:35px 0 33px 0}
