@@ -46,20 +46,28 @@ j(document).ready(function() {
         curSelect.find('.opendata-filter-item-current').removeClass('default').html(curSelect.find('.opendata-filter-item-list input:checked').parent().find('span').html());
 
         var curResults = curSelect.parents().filter('.opendata-group-container');
-        curResults.find('.opendata-results').addClass('loading');
         var curForm = curResults.find('.opendata-filter form');
-        var formData = curForm.serialize();
-
-        j.ajax({
-            type: 'GET',
-            url: curForm.attr('action'),
-            dataType: 'html',
-            data: formData,
-            cache: false
-        }).done(function(html) {
-            curResults.find('.opendata-results').html(html);
-            curResults.find('.opendata-results').removeClass('loading');
+        var allSelected = true;
+        curForm.find('.opendata-filter-item').each(function() {
+            if (j(this).find('.opendata-filter-item-list input:checked').length == 0) {
+                allSelected = false;
+            }
         });
+        if (allSelected) {
+            curResults.find('.opendata-results').addClass('loading');
+            var formData = curForm.serialize();
+
+            j.ajax({
+                type: 'GET',
+                url: curForm.attr('action'),
+                dataType: 'html',
+                data: formData,
+                cache: false
+            }).done(function(html) {
+                curResults.find('.opendata-results').html(html);
+                curResults.find('.opendata-results').removeClass('loading');
+            });
+        }
     });
 
     j('.opendata-filter-item-list label').click(function() {
