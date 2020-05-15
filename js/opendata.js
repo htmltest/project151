@@ -85,6 +85,27 @@ j(document).ready(function() {
 
 });
 
+j(window).on('load', function() {
+    if (window.location.hash != '') {
+        var curContainer = j(window.location.hash);
+        if (curContainer.length == 1) {
+            var curGroup = curContainer.parent();
+            var curBlock = curGroup.parent().parent();
+            var blockTransition = curBlock.find('.opendata-block-container').eq(0).css('transition');
+            var groupTransition = curBlock.find('.opendata-group-container').eq(0).css('transition');
+            curBlock.find('.opendata-block-container').css('transition', 'none');
+            curGroup.find('.opendata-group-container').css('transition', 'none');
+            curGroup.removeClass('open');
+            curGroup.find('.opendata-group-title').trigger('click');
+            curBlock.removeClass('open');
+            curBlock.find('.opendata-block-title').trigger('click');
+            j('html, body').animate({'scrollTop': curGroup.offset().top});
+            curBlock.find('.opendata-block-container').css('transition', blockTransition);
+            curGroup.find('.opendata-group-container').css('transition', groupTransition);
+        }
+    }
+});
+
 j(window).on('load resize', function() {
     j('.opendata-table').each(function() {
         if (j(window).width() < 1025) {
